@@ -12,7 +12,9 @@ namespace AspNetCoreProject.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var homeModel = new HomeModel() { Message = "Hello from Home Model" };
+            ViewBag.Text = homeModel.Message;
+            return View(homeModel);
         }
 
         public IActionResult About()
