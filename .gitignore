@@ -1,3 +1,5 @@
 AspNetCoreProject/bin/
 AspNetCoreProject/obj/
+DataLayer/bin/
+DataLayer/obj/
 .vs/
