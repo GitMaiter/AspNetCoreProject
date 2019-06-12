@@ -19,9 +19,29 @@ namespace AspNetCoreProject.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Your process history.";
+            var coffe = new Coffee()
+            {
+                    Id = 1,
+                    StartDate = DateTime.Now.Date,
+                    EndDate = null,
+                    Sort = "Arabica"
+            };
+           
+            return View(coffe);
+        }
 
-            return View();
+        public string ProcessResult(int Id, DateTime startDate, DateTime endDate, string sort)
+        {
+            var coffe = new Coffee()
+            {
+                Id = Id,
+                StartDate = startDate,
+                EndDate = endDate,
+                Sort = sort
+            };
+            return $"{Id} {startDate} {endDate} {sort}";
+
         }
 
         public IActionResult Contact()

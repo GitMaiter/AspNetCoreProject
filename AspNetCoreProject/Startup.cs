@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using System.Threading.Tasks;
 using AspNetCoreProject.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -86,7 +87,7 @@ namespace AspNetCoreProject
             //{
             //    await context.Response.WriteAsync("{controller}/{action}/{id}/{*catchall} template using");
             //});
-
+ 
             #endregion
 
             app.UseMiddleware<LoggerMiddleware>();

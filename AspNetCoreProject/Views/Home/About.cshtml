@@ -1,7 +1,34 @@
-﻿@{
-    ViewData["Title"] = "About";
-}
-<h2>@ViewData["Title"]</h2>
+﻿@*@{
+        ViewData["Title"] = "About";
+    }*@
+@using AspNetCoreProject.Models
+@model Coffee
+@*<h2>@ViewData["Title"]</h2>*@
 <h3>@ViewData["Message"]</h3>
 
+<table>
+    <tr>
+        @Model.Id
+    </tr>
+    <tr>
+        @Model.StartDate
+    </tr>
+    <tr>
+        <td>@Model.EndDate</td>
+    </tr>
+    <tr>
+        <td>@Model.Sort</td>
+    </tr>
+</table>
+<form method="post" action="~/Home/ProcessResult">
+    <label>Id:</label><br />
+    <input type="text" name="id" /><br />
+    <label>StartDate:</label><br />
+    <input type="text" name="startDate" /><br />
+    <label>EndDate:</label><br />
+    <input type="text" name="endDate" /><br />
+    <label>Sort:</label><br />
+    <input type="text" name="sort" /><br />
+    <input type="submit" value="Register" /><br />
+</form>
 <p>Use this area to provide additional information.</p>
