@@ -20,7 +20,7 @@ namespace AspNetCoreProject.Controllers
         public IActionResult About()
         {
             ViewData["Message"] = "Your process history.";
-            var coffe = new Coffee()
+            var coffe = new CoffeeModel()
             {
                     Id = 1,
                     StartDate = DateTime.Now.Date,
@@ -33,7 +33,7 @@ namespace AspNetCoreProject.Controllers
 
         public string ProcessResult(int Id, DateTime startDate, DateTime endDate, string sort)
         {
-            var coffe = new Coffee()
+            var coffe = new CoffeeModel()
             {
                 Id = Id,
                 StartDate = startDate,

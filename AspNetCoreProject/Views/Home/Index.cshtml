@@ -1,11 +1,13 @@
-﻿@model HomeModel
+﻿@inject AspNetCoreProject.Models.IDrinkPreparation DrinkPreparation
+@model HomeModel
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="row">
-    <div class="col-md-12">
-        <h1>@Model.Message</h1>
-        <h1>@ViewBag.Text</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>@Model.Message</h1>
+            <h1>@ViewBag.Text</h1>
+        </div>
+        <h2>@DrinkPreparation.Preparation()</h2>
     </div>
-</div>
