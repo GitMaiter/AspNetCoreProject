@@ -1,19 +1,19 @@
-﻿using DataLayer.Enityes;
+﻿using DataLayer.Entityes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace DataLayer
 {
     public class EFDBContext : DbContext
     {
-        public DbSet<Directory> Directory { get; set; }
-        public DbSet<Material> Material { get; set; }
+        public DbSet<CoffeeDbModel> CoffeeDbModel { get; set; }
+
         public EFDBContext(DbContextOptions<EFDBContext> options) : base (options) { }
     }
-
 
     // For Migrations
     public class DbContextFactory : IDesignTimeDbContextFactory<EFDBContext>
@@ -21,7 +21,7 @@ namespace DataLayer
         public EFDBContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<EFDBContext>();
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=AspNetCoreProj;Trusted_Connection=True;MultipleActiveResultSets=True", b => b.MigrationsAssembly("DataLayer"));
+            optionsBuilder.UseSqlServer("Server=localhost,11433; database=CoffeeMakerDB;user id=sa;password=Pwd12345!", b => b.MigrationsAssembly("DataLayer"));
             return new EFDBContext(optionsBuilder.Options);
         }
     }

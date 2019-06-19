@@ -7,10 +7,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using DataLayer;
+
 
 namespace AspNetCoreProject
 {
@@ -32,9 +35,9 @@ namespace AspNetCoreProject
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddTransient<IDrinkPreparation, CoffeeModel>();
+            services.AddTransient<IDrinkPreparation, CoffeeModel>(); 
             services.AddRouting();
-
+            services.AddDbContext<EFDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CoffeeMakerDBConnection")));
             // implement DI here
             //services.AddTransient<Interface, Class>()
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1); 

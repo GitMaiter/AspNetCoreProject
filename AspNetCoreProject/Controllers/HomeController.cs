@@ -5,11 +5,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AspNetCoreProject.Models;
+using DataLayer;
 
 namespace AspNetCoreProject.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly EFDBContext _context;
+
+        public HomeController(EFDBContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
             var homeModel = new HomeModel() { Message = "Hello from Home Model" };
@@ -27,7 +35,7 @@ namespace AspNetCoreProject.Controllers
                     EndDate = null,
                     Sort = "Arabica"
             };
-           
+            _context.Add(coffe);
             return View(coffe);
         }
 
